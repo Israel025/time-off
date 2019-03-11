@@ -1,7 +1,9 @@
 import React from 'react';
 import Styles from '../../assets/styles/Home.module.css';
 import Header from '../common/Header';
-import Footer from '../common/Footer';
+// import Footer from '../common/Footer';
+import '../../assets/styles/Home.css';
+
 
 
 class Home extends React.Component{
@@ -11,7 +13,7 @@ class Home extends React.Component{
         <div className={Styles["home-content"]}>
 
             <div className={Styles["head-div"]}>
-                <Header/>
+                {/* <Header/> */}
             </div>
             <div className={Styles["body-div"]}>
                 <div className={Styles["left-div"]}></div>
@@ -23,8 +25,8 @@ class Home extends React.Component{
                     </div>
                 </div>            
             </div>
-            <div className={Styles["foot-div"]}>
-                <Footer/>
+            <div className="foot-div">
+                {/* <Footer/> */}
             </div>
           
         </div>
