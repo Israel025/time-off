@@ -5,6 +5,49 @@
     
 }
 
+.top-info{
+    text-align: center;
+}
+
+.top-info > h2{
+    color: #0d3672;
+    font-weight: bold;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.top-info > p{
+    font-weight: bold;
+}
+
 .foot-div{
     background-color: #000000;
+}
+.full{
+    padding: -15px;
+    margin: 0;
+    display: block;
+}
+
+.range{
+    max-height: 60vh;
+
+}
+.carr{
+    height: 60vh;
+    width: vh;
+}
+.slide{
+    padding:-5vh;
+    margin: -5vh;
+    margin-top: 0vh;
+    margin-right: -2vh;
+    margin-left: -5vh;
+    
+}
+.index{
+    z-index: -1;
+}
+
+.icon-text{
+    text-align: justify;
+    font-weight: bold;
 }

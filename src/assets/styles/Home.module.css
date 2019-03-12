@@ -1,24 +1,35 @@
+.home-content{
+    position: relative;
+    height: 100%;
+}
 .head-div{
-    /* background-color: black; */
     padding: 0;
-    margin: 0;
-    
+    margin: 0;    
 }
 
-/* .foot-div{
-    background-color: #000000;
-} */
-
+.foot-div{
+    background-color: black;
+    clear: both;
+}
+.left-img{
+    height: 100%;
+}
 .icons{
     height: 20vmin;
+    border-radius: 2vh;
+    border-style: double;
+    border-width: 5px;
 }
 .icons-div{
     display: flex;
+    align-content: center;
+    justify-content: space-between
+
 }
 
 .carousel-main{
-    height: 10%;
-    overflow: hidden;
-    
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;   
 
 }
