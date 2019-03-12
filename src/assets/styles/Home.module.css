@@ -5,6 +5,20 @@
     
 }
 
-.foot-div{
+/* .foot-div{
     background-color: #000000;
+} */
+
+.icons{
+    height: 20vmin;
+}
+.icons-div{
+    display: flex;
+}
+
+.carousel-main{
+    height: 10%;
+    overflow: hidden;
+    
+
 }
