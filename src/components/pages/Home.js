@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Styles from '../../assets/styles/Home.module.css';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
@@ -12,8 +13,8 @@ import Fun from '../../assets/images/icons-pngs/leisure.png';
 import Health from '../../assets/images/icons-pngs/health.png';
 import Family from '../../assets/images/icons-pngs/maternity.png';
 import Travel from '../../assets/images/icons-pngs/travel.png';
-import Carousel from 'react-bootstrap/Carousel';
-import SignupBtn from '../common/SignupBtn'
+//import Carousel from 'react-bootstrap/Carousel';
+import SignupBtn from '../common/SignupBtn';
 class Home extends React.Component{
 
     render() {
@@ -25,7 +26,9 @@ class Home extends React.Component{
             </div>
             <div className="row index">
                 <div className="col-md-4">
-                    <SignupBtn/>
+                    <Link to='/sign-up'>
+                        <SignupBtn/>
+                    </Link>
                     <img className="index" alt="sideBar" src={Side}/>
                 </div>
                 <div className="col-md-8 row .mx-auto px-0">

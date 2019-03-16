@@ -1,6 +1,7 @@
 import React from 'react';
 import Styles from '../../assets/styles/Footer.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 // const footer = {
 //     backgroundColor: '#000000'
 //   };

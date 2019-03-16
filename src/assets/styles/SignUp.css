@@ -1,26 +1,27 @@
-.position{
-    width: 80vh;
-    margin-top: 13vh;
-    margin-left: 20vh;
+.signupPos{
+    width: 140vh;
+    margin-top: 2vh;
+    margin-left: -3vh;
     border-radius: 2vh;
     border-style: outset;
     /* border: 2vh; */
     border-width: 2px;
     justify-content: center;
-    padding: 5vh;
+    padding: 3vh;
 }
 
-.btnpos{
+.signupBtnPos{
     justify-content: center;
     text-align: center;
     
 }
 
-.btnpos > button{
-    margin-left: 10vh;
+.signupBtnPos > button{
+    margin-top: 5vh;
     font-weight: 900;
 }
-.error{
+.SignupError{
     font-size: 12px;
     color: #ff0404;
 }
+
