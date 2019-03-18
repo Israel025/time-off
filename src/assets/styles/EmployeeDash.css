@@ -1,0 +1,31 @@
+.eDash-header{
+    background-color:#000000;
+}
+
+.eDash-left-png{
+    margin-left: 0;
+}
+
+.eDash-top-right{
+    display: flex;
+}
+
+.eDash-admin-links{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 30px;
+}
+
+.eDash-logout-btn{
+    font-weight: bold;
+}
+
+.eDash-links{
+    text-decoration: none;
+    margin: 2px;
+    font-weight: bold;
+}
+
+.eDash-link-color{
+    color: #acd1f3;
+}

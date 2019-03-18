@@ -15,11 +15,13 @@ class Header extends React.Component{
                             <img className="left-png" src={Png} alt="Brand-Logo"/>
                         </Link>
                     </div> 
-                    <div className="header-right">        
+                    <div className="header-right" style={{display: 'flex', justifyContent: 'space-between'}}> 
+                        <Link to='/employee-dash'>
+                            <button type="button" className="btn btn-success btn-sm" style={{margin: '5px', }} >Dashboard</button>
+                        </Link>       
                         <Link to='/login'>
                             <LoginBtn/>                        
-                        </Link>            
-                        
+                        </Link>       
                     </div>                   
                 </nav>                
             </header>

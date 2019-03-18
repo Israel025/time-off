@@ -1,0 +1,31 @@
+.header{
+    background-color:#000000;
+}
+
+.left-png{
+    margin-left: 0;
+}
+
+.eDash-top-right{
+    display: flex;
+}
+
+.admin-links{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 30px;
+}
+
+.logout-btn{
+    font-weight: bold;
+}
+
+.dash-links{
+    text-decoration: none;
+    margin: 2px;
+    font-weight: bold;
+}
+
+.eDash-link-color{
+    color: #acd1f3;
+}
