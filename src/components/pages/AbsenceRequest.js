@@ -47,12 +47,50 @@ class AbsenceRequest extends React.Component{
                     </header>
                 </div>
                 
-                <div className="abReq-body">
+                <div className=" row abReq-body">
                     <div className="col-md-4">
                         <img className="index" alt="sideBar" src={Side}/>
                     </div>
 
-                    <div className="abReq-form-div">
+                    <div className="col-md-8 abReq-form-div">
+
+                        <div className="">
+                            <form>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <select className="custom-select" placeholder="Type of Leave" required>
+                                            <option value="">Type of Leave</option>
+                                            <option value="maternity">Maternity</option>
+                                            <option value="health">Health</option>
+                                            <option value="travel">Travel</option>
+                                            <option value="education">Education</option>
+                                            <option value="liesure">Liesure</option>
+                                        </select>
+                                        <div className="invalid-feedback">Select a country</div>
+                                    </div>
+                                </div>
+
+                                <div className="form-row">
+
+
+                                    <div class="form-group col-md-4 mb-3">
+                                        <input type="number" class="form-control" id="abReqDur" placeholder="duration" disabled/>
+                                    </div>
+                                </div>
+                                <div className="form-row">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="abReqText" rows="5"></textarea>
+                                    </div>                                
+                                </div>
+
+                                <div className="form-row">
+                                    <button type="submit" 
+                                    className="btn btn-primary">Submit Request</button>        
+                                </div>
+                                
+                            </form>
+
+                        </div>
                         
 
                     </div>

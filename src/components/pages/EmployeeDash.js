@@ -4,9 +4,17 @@ import Png from '../../assets/images/logos/logo.png';
 import '../../assets/styles/EmployeeDash.css';
 import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Calendar from 'react-calendar';
 
 
 class EmployeeDash extends React.Component{
+
+    state = {
+        date: new Date(2017, 0, 1),
+    }
+
+    onChange = date => this.setState({ date })    
+
     render(){
         return(
             <div>
@@ -136,7 +144,11 @@ class EmployeeDash extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div></div> 
+                    <div className="eDash-calendar">
+                        <Calendar onChange={this.onChange} 
+                            value={this.state.date}
+                            showNavigation={false}/>                    
+                    </div> 
                     <div className="">
                         <div class="eDash-table2-div">
                             <div className="dash-txt">
