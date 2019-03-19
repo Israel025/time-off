@@ -30,13 +30,6 @@ class Login extends React.Component{
               validWhen: false, 
               message: 'Password is required.'
             },
-            // { 
-            //     field: 'loginpass', 
-            //     [min: 8],
-            //     method: 'isLength', 
-            //     validWhen: true, 
-            //     message: 'Password must be 8 or more digits long.'
-            //   },
         ]);
 
         this.state = {
