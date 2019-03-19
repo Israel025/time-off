@@ -1,31 +1,31 @@
-.header{
+.abReq-header{
     background-color:#000000;
 }
 
-.left-png{
+.abReq-left-png{
     margin-left: 0;
 }
 
-.eDash-top-right{
+.abReq-top-right{
     display: flex;
 }
 
-.admin-links{
+.abReq-admin-links{
     display: flex;
     justify-content: space-around;
     margin-right: 30px;
 }
 
-.logout-btn{
+.abReq-logout-btn{
     font-weight: bold;
 }
 
-.dash-links{
+.abReq-links{
     text-decoration: none;
     margin: 2px;
     font-weight: bold;
 }
 
-.eDash-link-color{
+.abReq-link-color{
     color: #acd1f3;
 }

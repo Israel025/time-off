@@ -12,12 +12,12 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faCoffee, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import SignUp from './components/pages/SignUp';
 //import Main from './Main';
 
-library.add(fab, faCheckSquare, faCoffee);
+library.add(fab, faCheckSquare, faCoffee, faTrashAlt);
 
 ReactDOM.render(<Router>
                     <App/>

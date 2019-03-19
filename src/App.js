@@ -9,7 +9,6 @@ import EmployeeDash from './components/pages/EmployeeDash';
 import AbsenceRequest from './components/pages/AbsenceRequest';
 import Teamview from './components/pages/TeamView';
 
-
 class App extends React.Component {
     render(){
       return (

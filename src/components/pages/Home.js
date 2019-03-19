@@ -13,6 +13,7 @@ import Fun from '../../assets/images/icons-pngs/leisure.png';
 import Health from '../../assets/images/icons-pngs/health.png';
 import Family from '../../assets/images/icons-pngs/maternity.png';
 import Travel from '../../assets/images/icons-pngs/travel.png';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import Carousel from 'react-bootstrap/Carousel';
 import SignupBtn from '../common/SignupBtn';
 class Home extends React.Component{
@@ -31,7 +32,7 @@ class Home extends React.Component{
                     </Link>
                     <img className="index" alt="sideBar" src={Side}/>
                 </div>
-                <div className="col-md-8 row .mx-auto px-0">
+                <div className="col-md-8 row mx-auto px-0">
                     <div className="col-md-12 range">
                         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-inner">

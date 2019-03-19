@@ -10,6 +10,10 @@
     display: flex;
 }
 
+.eDash-foot{
+
+}
+
 .eDash-admin-links{
     display: flex;
     justify-content: space-around;
@@ -29,3 +33,114 @@
 .eDash-link-color{
     color: #acd1f3;
 }
+
+.eDash-top-text{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    /* border: 1px solid; */
+    padding: 10px;
+    box-shadow: 5px 10px 8px #2e2b2b;
+}
+
+.eDash-top-text > h2{
+    font-weight: bold;
+    color: #1a7dda;
+}
+.eDash-top-text>p{
+    font-weight: bold;
+}
+
+.card-group{
+    margin-top: 20px;
+}
+
+.card{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 7px;
+}
+
+.stat-size{
+    font-size: 9vh;
+    font-weight: bold;
+}
+
+.card-text{
+    font-size: 2vh;
+}
+
+.card-header{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tbody{
+    font-size: 12px;
+    padding: 0px;
+}
+
+.tr-left{
+    text-align: left;
+}
+
+.tr-right{
+    text-align: right;
+}
+
+.eDash-table2-div{
+    margin: 5px;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 20px;
+}
+
+.eDash-table2{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.eDash-tbl2-txt{
+    font-weight: bold;
+    color: #1a7dda;
+}
+.dash-txt{
+    margin-left: 5px;
+}
+
+.approved{
+    color: #ffffff;
+    background-color: #117a34;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.pending{
+    color: #ffffff;
+    background-color: #f09a29;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.rejected{
+    color: #ffffff;
+    background-color: #e42323;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.tr-pad{
+    
+}
+/* style="max-width: 18rem;" */

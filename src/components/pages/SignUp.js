@@ -13,24 +13,32 @@ class SignUp extends React.Component{
         super();
 
         this.validator = new FormValidator([
+            // { 
+            //   field: 'loginmail', 
+            //   method: 'isEmpty', 
+            //   validWhen: false, 
+            //   message: 'Email is required.' 
+            // },
+            // { 
+            //   field: 'loginmail',
+            //   method: 'isEmail', 
+            //   validWhen: true, 
+            //   message: 'That is not a valid email.'
+            // },
+            // { 
+            //   field: 'loginpass', 
+            //   method: 'isEmpty', 
+            //   validWhen: false, 
+            //   message: 'Password is required.'
+            // },
             { 
-              field: 'loginmail', 
-              method: 'isEmpty', 
-              validWhen: false, 
-              message: 'Email is required.' 
-            },
-            { 
-              field: 'loginmail',
-              method: 'isEmail', 
-              validWhen: true, 
-              message: 'That is not a valid email.'
-            },
-            { 
-              field: 'loginpass', 
-              method: 'isEmpty', 
-              validWhen: false, 
-              message: 'Password is required.'
-            },
+                field: 'signupPhone', 
+                method: 'isLength', 
+                min: 11,
+                max: 11,
+                validWhen: true, 
+                message: 'Phone number must be 11 digits.'
+              },
         ]);
 
         this.state = {
