@@ -116,7 +116,9 @@ class Login extends React.Component{
 
                         <div className="mb-4 ">
                             <div className="col-sm-10 btnpos">
-                                <button type="submit" onClick={this.handleFormSubmit} className="btn btn-primary">Submit</button>
+                                <button type="submit" 
+                                    onClick={this.handleFormSubmit} 
+                                    className="btn btn-primary">Submit</button>
                             </div>
                         </div>
 
