@@ -5,12 +5,16 @@ import '../../assets/styles/EmployeeDash.css';
 import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Calendar from 'react-calendar';
+import HorizontalCalendar from 'horizontal-calendar';
 
 
 class EmployeeDash extends React.Component{
 
     state = {
-        date: new Date(2017, 0, 1),
+        date1: new Date(2019, 0, 4),
+        date2: new Date(2019, 1, 8),
+        date3: new Date(2019, 2, 6),
+        date4: new Date(2019, 3, 10),
     }
 
     onChange = date => this.setState({ date })    
@@ -144,10 +148,45 @@ class EmployeeDash extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className="eDash-calendar">
-                        <Calendar onChange={this.onChange} 
-                            value={this.state.date}
-                            showNavigation={false}/>                    
+                    <div className="row eDash-calendar">
+
+                        {/* <HorizontalCalendar 
+                            showing={{
+                                years: true,
+                                quarters: true,
+                                months: true,
+                                days: true,
+                                weeks: true
+
+                            }}
+                            noSelect={{
+                                years: false,
+                                quarters: false,
+                                months: false,
+                                days: false,
+                                weeks: false
+                            }} 
+                            startDate='2018-09-01'
+                            endDate='2019-07-30'
+                            selectedMode='day'
+                            selectedDate='2019-02-04'/> */}
+
+                        <Calendar className='col-md-3' onChange={this.onChange} 
+                            value={this.state.date1}
+                            showNavigation={false}/>
+                        
+                        <Calendar className='col-md-3' onChange={this.onChange} 
+                            value={this.state.date2}
+                            showNavigation={false}/>
+
+                        
+                        <Calendar className='col-md-3' onChange={this.onChange} 
+                            value={this.state.date3}
+                            showNavigation={false}/>
+
+                        <Calendar className='col-md-3' onChange={this.onChange} 
+                            value={this.state.date4}
+                            showNavigation={false}/>
                     </div> 
                     <div className="">
                         <div class="eDash-table2-div">
