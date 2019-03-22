@@ -16,9 +16,6 @@ class Header extends React.Component{
                         </Link>
                     </div> 
                     <div className="header-right" style={{display: 'flex', justifyContent: 'space-between'}}> 
-                        <Link to='/employee-dash'>
-                            <button type="button" className="btn btn-success btn-sm" style={{margin: '5px', }} >Dashboard</button>
-                        </Link>       
                         <Link to='/login'>
                             <LoginBtn/>                        
                         </Link>       
