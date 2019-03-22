@@ -19,6 +19,7 @@
     "react-dom": "^16.8.4",
     "react-router": "^4.3.1",
     "react-scripts": "2.1.8",
+    "sweetalert": "^2.1.2",
     "validator": "^10.11.0"
   },
   "scripts": {

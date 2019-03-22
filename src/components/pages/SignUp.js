@@ -6,6 +6,11 @@ import Side from '../../assets/images/side2.jpg';
 import SignupBtn from '../common/SignupBtn';
 import { Link } from 'react-router-dom';
 import FormValidator from '../common/FormValidator';
+import Swal from 'sweetalert';
+
+
+
+const locale = 'en-US'||'ar'||'ar-AE'||'ar-BH'||'ar-DZ'||'ar-EG'||'ar-IQ'||'ar-JO'||'ar-KW'||'ar-LB'||'ar-LY'||'ar-MA'||'ar-QA'||'ar-QM'||'ar-SA'||'ar-SD'||'ar-SY'||'ar-TN'||'ar-YE'||'bg-BG'||'cs-CZ'||'da-DK'||'de-DE'||'el-GR'||'en-AU'||'en-GB'||'en-HK'||'en-IN'||'en-NZ'||'en-ZA'||'en-ZM'||'es-ES'||'fr-FR'||'hu-HU'||'it-IT'||'nb-NO'||'nl-NL'||'nn-NO'||'pl-PL'||'pt-BR'||'pt-PT'||'ru-RU'||'sk-SK'||'sr-RS'||'sr-RS@latin'||'sv-SE'||'tr-TR'||'uk-UA';
 
 class SignUp extends React.Component{
     
@@ -21,9 +26,10 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupFname', 
-                method: 'isAlpha', 
+                method: 'isAlpha',
+                args: [locale], 
                 validWhen: true, 
-                message: 'Enter alphabets only.' 
+                message: 'Single word of alphabets only.' 
             },
             { 
                 field: 'signupLname', 
@@ -34,8 +40,9 @@ class SignUp extends React.Component{
             { 
                 field: 'signupLname',
                 method: 'isAlpha', 
+                args: [locale],
                 validWhen: true, 
-                message: 'Enter alphabets only.'
+                message: 'Single word of alphabets only.'
             },
             { 
               field: 'signupEmail', 
@@ -75,7 +82,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupCoy', 
-                method: 'isAlphanumeric', 
+                method: 'matches', 
+                args: [/([a-zA-Z\d]{1}[a-zA-Z\d]*[\s]{0,1}[a-zA-Z\d])+([\s]{0,1}[a-zA-Z\d]+)/],
                 validWhen: true, 
                 message: 'Invalid entry.' 
             },
@@ -87,7 +95,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupPost', 
-                method: 'isAlpha', 
+                method: 'matches', 
+                args: [/([a-zA-Z]{1}[a-zA-Z]*[\s]{0,1}[a-zA-Z])+([\s]{0,1}[a-zA-Z]+)/],
                 validWhen: true, 
                 message: 'Alphabets only.' 
             },
@@ -99,7 +108,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupDept', 
-                method: 'isAlpha', 
+                method: 'matches', 
+                args: [/([a-zA-Z]{1}[a-zA-Z]*[\s]{0,1}[a-zA-Z])+([\s]{0,1}[a-zA-Z]+)/],
                 validWhen: true, 
                 message: 'Alphabets only.' 
             },
@@ -111,7 +121,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupManager', 
-                method: 'isAlpha', 
+                method: 'matches', 
+                args: [/([a-zA-Z]{1}[a-zA-Z]*[\s]{0,1}[a-zA-Z])+([\s]{0,1}[a-zA-Z]+)/],
                 validWhen: true, 
                 message: 'Alphabets only.' 
             },
@@ -126,7 +137,7 @@ class SignUp extends React.Component{
               method: 'matches',
               args: [/^\(?\d\d\d\)? ?\d\d\d\d-?\d\d\d\d$/], // args is an optional array of arguements that will be passed to the validation method
               validWhen: true, 
-              message: 'That is not a valid phone number.'
+              message: 'Invalid phone number (11 digits only).'
             },
             { 
                 field: 'signupDob', 
@@ -142,7 +153,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupCity', 
-                method: 'isAlpha', 
+                method: 'matches', 
+                args: [/([a-zA-Z]{1}[a-zA-Z]*[\s]{0,1}[a-zA-Z])+([\s]{0,1}[a-zA-Z]+)/],
                 validWhen: true, 
                 message: 'Alphabets only.' 
             },
@@ -154,7 +166,8 @@ class SignUp extends React.Component{
             },
             { 
                 field: 'signupState', 
-                method: 'isAlpha', 
+                method: 'matches', 
+                args: [/([a-zA-Z]{1}[a-zA-Z]*[\s]{0,1}[a-zA-Z])+([\s]{0,1}[a-zA-Z]+)/],
                 validWhen: true, 
                 message: 'Alphabets only.' 
             },
@@ -181,7 +194,7 @@ class SignUp extends React.Component{
           this.submitted = false;
         }
       
-        passwordMatch = (confirmation, state) => (state.password === confirmation)
+        passwordMatch = (confirmation, state) => (state.signupPass === confirmation);
       
         handleInputChange = event => {
             event.preventDefault();
@@ -198,6 +211,14 @@ class SignUp extends React.Component{
     
             if (validation.isValid) {
             // handle actual form submission here
+                Swal({
+                    title: "Sign-up Successful",
+                    // text: "You clicked the button!",
+                    icon: "success",
+                    button: "Okay",
+                });
+                
+                this.props.history.push('/login');
             }
         }
 
@@ -219,7 +240,7 @@ class SignUp extends React.Component{
                     <img className="index" alt="sideBar" src={Side}/>
                 </div>
                 <div className="col-md-8">
-                    <form className="needs-validation signupPos" novalidate>
+                    <form className="needs-validation signupPos" noValidate>
                         <div className="form-row">
 
                             <div className={`col-md-6 mb-3 ${validateSignup.signupFname.isInValid && 'has-error'}`}>
@@ -250,7 +271,7 @@ class SignUp extends React.Component{
 
                         <div className="form-row">
 
-                            <div className={`col-md-4 mb-3 ${validateSignup.signupEmail.isInValid && 'has-error'}`}>
+                            {/* <div className={`col-md-4 mb-3 ${validateSignup.signupEmail.isInValid && 'has-error'}`}>
                                 <label htmlFor="signupEmail">Email Address</label>
                                 <div className="input-group">
                                     <div className="input-group-prepend">
@@ -265,7 +286,19 @@ class SignUp extends React.Component{
                                     />
                                     <span className="help-block SignupError">{validateSignup.signupEmail.message}</span>
                                 </div>
-                            </div>
+                            </div> */}
+
+                            <div className={`col-md-4 mb-3 ${validateSignup.signupEmail.isInValid && 'has-error'}`}>
+                                <label htmlFor="signupEmail">Email Address</label>
+                                <input type="email" 
+                                    className="form-control" 
+                                    id="signupEmail" 
+                                    name="signupEmail" 
+                                    onChange={this.handleInputChange}
+                                    placeholder="user@domain.com" required
+                                />
+                                <span className="help-block SignupError">{validateSignup.signupEmail.message}</span>
+                            </div>                            
 
                             <div className={`col-md-4 mb-3 ${validateSignup.signupPass.isInValid && 'has-error'}`}>
                                 <label htmlFor="signupPass">Password</label>
@@ -353,7 +386,7 @@ class SignUp extends React.Component{
                                     id="signupPhone" 
                                     name="signupPhone"
                                     onChange={this.handleInputChange}
-                                    placeholder="Phone Number" required
+                                    placeholder="(xxx)xxx-xxxx" required
                                 />
                                 <span className="help-block SignupError">{validateSignup.signupPhone.message}</span>
                             </div>
@@ -424,7 +457,7 @@ class SignUp extends React.Component{
                             </div>
 
                             <div className={`col-md-4 mb-3 ${validateSignup.signupState.isInValid && 'has-error'}`}>
-                                <label for="signupState">State</label>
+                                <label htmlFor="signupState">State</label>
                                 <input type="text" 
                                     className="form-control" 
                                     id="signupState" 
@@ -440,7 +473,7 @@ class SignUp extends React.Component{
                         <div className="form-group signupBtnPos">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
-                                <label className="form-check-label" for="invalidCheck">
+                                <label className="form-check-label" htmlFor="invalidCheck">
                                     Agree to terms and conditions
                                 </label>
                                 <div className="invalid-feedback">

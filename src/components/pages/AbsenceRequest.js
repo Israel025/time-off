@@ -4,8 +4,21 @@ import Png from '../../assets/images/logos/logo.png';
 import '../../assets/styles/AbsenceRequest.css';
 import Footer from '../common/Footer';
 import Side from '../../assets/images/side2.jpg';
-
+import Swal from 'sweetalert';
 class AbsenceRequest extends React.Component{
+
+    handleLogout  = (e) => {
+        e.preventDefault();
+        Swal({
+            title: "Loggedout Successfully",
+            // text: "You clicked the button!",
+            icon: "success",
+            button: "Okay",
+        });
+        this.props.history.push('/login');
+
+    }
+
     render(){
         return(
             <div>
@@ -39,7 +52,8 @@ class AbsenceRequest extends React.Component{
                                 </div>                                
                                 <div class="abReq-logout-div">
                                     <Link to="/">
-                                        <button className="btn btn-danger abReq-logout-btn">Log out</button>
+                                        <button className="btn btn-danger abReq-logout-btn"
+                                            onClick={this.handleLogout}>Log out</button>
                                     </Link>
                                 </div>
                             </div>                   

@@ -5,7 +5,7 @@ import '../../assets/styles/EmployeeDash.css';
 import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Calendar from 'react-calendar';
-import HorizontalCalendar from 'horizontal-calendar';
+import Swal from 'sweetalert';
 
 
 class EmployeeDash extends React.Component{
@@ -17,7 +17,19 @@ class EmployeeDash extends React.Component{
         date4: new Date(2019, 3, 10),
     }
 
-    onChange = date => this.setState({ date })    
+    onChange = date => this.setState({ date });
+    
+    handleLogout  = (e) => {
+        e.preventDefault();
+        Swal({
+            title: "Loggedout Successfully",
+            // text: "You clicked the button!",
+            icon: "success",
+            button: "Okay",
+        });
+        this.props.history.push('/login');
+
+    }
 
     render(){
         return(
@@ -52,7 +64,8 @@ class EmployeeDash extends React.Component{
                                 </div>                                
                                 <div class="logout-div">
                                     <Link to="/">
-                                        <button className="btn btn-danger eDash-logout-btn">Log out</button>
+                                        <button className="btn btn-danger eDash-logout-btn"
+                                            onClick={this.handleLogout}>Log out</button>
                                     </Link>
                                 </div>
                             </div>                   
@@ -149,27 +162,6 @@ class EmployeeDash extends React.Component{
                         </div>
                     </div>
                     <div className="row eDash-calendar">
-
-                        {/* <HorizontalCalendar 
-                            showing={{
-                                years: true,
-                                quarters: true,
-                                months: true,
-                                days: true,
-                                weeks: true
-
-                            }}
-                            noSelect={{
-                                years: false,
-                                quarters: false,
-                                months: false,
-                                days: false,
-                                weeks: false
-                            }} 
-                            startDate='2018-09-01'
-                            endDate='2019-07-30'
-                            selectedMode='day'
-                            selectedDate='2019-02-04'/> */}
 
                         <Calendar className='col-md-3' onChange={this.onChange} 
                             value={this.state.date1}

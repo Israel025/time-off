@@ -4,8 +4,22 @@ import Png from '../../assets/images/logos/logo.png';
 import '../../assets/styles/TeamView.css';
 import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Swal from 'sweetalert';
 
 class TeamView extends React.Component{
+
+    handleLogout  = (e) => {
+        e.preventDefault();
+        Swal({
+            title: "Loggedout Successfully",
+            // text: "You clicked the button!",
+            icon: "success",
+            button: "Okay",
+        });
+        this.props.history.push('/login');
+
+    }
+
     render(){
         return(
             <div>
@@ -39,7 +53,8 @@ class TeamView extends React.Component{
                                 </div>                                
                                 <div class="logout-div">
                                     <Link to="/">
-                                        <button className="btn btn-danger tView-logout-btn">Log out</button>
+                                        <button className="btn btn-danger tView-logout-btn"
+                                            onClick={this.handleLogout}>Log out</button>
                                     </Link>
                                 </div>
                             </div>                   

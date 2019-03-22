@@ -35,22 +35,22 @@ class Footer extends React.Component{
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
                                         <a href="#" className="btn-floating btn-sm">
-                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'facebook']} size="1g" />
+                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'facebook']} size="lg" />
                                         </a>
                                     </li>
                                     <li className="list-inline-item">
                                         <a href="#" className="btn-floating btn-sm">
-                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'twitter']} size="1g"/>
+                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'twitter']} size="lg"/>
                                         </a>
                                     </li>
                                     <li className="list-inline-item">
                                         <a href="#" className="btn-floating btn-sm">
-                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'linkedin']} size="1g"/>
+                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'linkedin']} size="lg"/>
                                         </a>
                                     </li>
-                                    <li class="list-inline-item">
+                                    <li className="list-inline-item">
                                         <a href="#" className="btn-floating btn-sm ">
-                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'github']} size="1g"/>
+                                            <FontAwesomeIcon className={Styles["fa"]} icon={['fab', 'github']} size="lg"/>
                                         </a>
                                     </li>
                                 </ul>

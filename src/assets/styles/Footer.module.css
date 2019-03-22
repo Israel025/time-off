@@ -2,13 +2,15 @@
     background-color: #000000;
     display: block;
     position: static;
-    clear: both;
+    /* clear: both; */
 }
 
 .copy-text{
-    color: #ffffff
+    color: #ffffff;
+    margin: 10px;
+    padding: 0%;
 }
 .fa{
     color: #ffffff;
-    vertical-align: -25%
+    vertical-align: -25%;
 }

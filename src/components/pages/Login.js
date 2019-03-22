@@ -6,8 +6,9 @@ import Side from '../../assets/images/side2.jpg';
 import SignupBtn from '../common/SignupBtn';
 import FormValidator from '../common/FormValidator';
 import { Link } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
-import EmployeeDash from '../pages/EmployeeDash';
+// import { Route, Switch } from 'react-router-dom';
+// import EmployeeDash from '../pages/EmployeeDash';
+import Swal from 'sweetalert';
 
 class Login extends React.Component{
     constructor(){
@@ -62,6 +63,12 @@ class Login extends React.Component{
 
         if (validation.isValid) {
         // handle actual form submission here
+            Swal({
+                title: "Credentials Confirmed!",
+                // text: "You clicked the button!",
+                icon: "success",
+                button: "Continue",
+            });
             this.props.history.push('/employee-dash');
             // return <Link to="/employee-dash"/>;    
         }
@@ -83,7 +90,7 @@ class Login extends React.Component{
                     <img className="index" alt="sideBar" src={Side}/>
                 </div>
                 <div className="col-md-8">
-                    <form className="needs-validation position" novalidate>
+                    <form className="needs-validation position" noValidate>
 
                         <div className={`mb-4 ${validateLogin.loginmail.isInValid && 'has-error'}`}>
                             <label htmlFor="loginMail">Email</label>
