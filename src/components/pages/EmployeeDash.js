@@ -6,6 +6,8 @@ import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Calendar from 'react-calendar';
 import Swal from 'sweetalert';
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 
 class EmployeeDash extends React.Component{
@@ -23,7 +25,6 @@ class EmployeeDash extends React.Component{
         e.preventDefault();
         Swal({
             title: "Loggedout Successfully",
-            // text: "You clicked the button!",
             icon: "success",
             button: "Okay",
         });
@@ -161,9 +162,39 @@ class EmployeeDash extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className="row eDash-calendar">
+                    <div className="row eDash-calDiv">
+                        <div className="eDashCal">
+                            <DayPicker 
+                                className="dayPik"
+                                numberOfMonths={5} 
+                                selectedDays={[
+                                    {
+                                        after: new Date(2019, 1, 11),
+                                        before: new Date(2019, 1, 16),
+                                    },
+                                    {
+                                        after: new Date(2019, 2, 11),
+                                        before: new Date(2019, 2, 16),
+                                    },
+                                    {
+                                        after: new Date(2019, 3, 11),
+                                        before: new Date(2019, 3, 16),
+                                    },
+                                    {
+                                        after: new Date(2019, 4, 11),
+                                        before: new Date(2019, 4, 16),
+                                    },
+                                    {
+                                        after: new Date(2019, 6, 11),
+                                        before: new Date(2019, 6, 16),
+                                    },
+                                  ]}
+                             />
+                        </div>
 
-                        <Calendar className='col-md-3' onChange={this.onChange} 
+                        
+
+                        {/* <Calendar className='col-md-3' onChange={this.onChange} 
                             value={this.state.date1}
                             showNavigation={false}/>
                         
@@ -178,7 +209,7 @@ class EmployeeDash extends React.Component{
 
                         <Calendar className='col-md-3' onChange={this.onChange} 
                             value={this.state.date4}
-                            showNavigation={false}/>
+                            showNavigation={false}/> */}
                     </div> 
                     <div className="">
                         <div class="eDash-table2-div">

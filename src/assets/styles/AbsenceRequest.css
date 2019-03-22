@@ -29,3 +29,30 @@
 .abReq-link-color{
     color: #acd1f3;
 }
+
+.abReq-submit{
+    justify-content: center;
+    text-align: center;
+}
+
+.abReq-submit > button{
+    margin-top: 5vh;
+    font-weight: 900;
+}
+
+.abReq-form-div{
+    justify-content: center;
+}
+
+.abReq-formPos{
+    width: 110vh;
+    margin-top: 10vh;
+    margin-left: 10vh;
+    border-radius: 2vh;
+    border-style: outset;
+    border-width: 2px;
+}
+
+.abReq-form{
+    padding: 10px;
+}

@@ -213,7 +213,6 @@ class SignUp extends React.Component{
             // handle actual form submission here
                 Swal({
                     title: "Sign-up Successful",
-                    // text: "You clicked the button!",
                     icon: "success",
                     button: "Okay",
                 });
@@ -386,7 +385,7 @@ class SignUp extends React.Component{
                                     id="signupPhone" 
                                     name="signupPhone"
                                     onChange={this.handleInputChange}
-                                    placeholder="(xxx)xxx-xxxx" required
+                                    placeholder="08012345678" required
                                 />
                                 <span className="help-block SignupError">{validateSignup.signupPhone.message}</span>
                             </div>

@@ -58,7 +58,7 @@
 
 .card{
     text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Roboto, sans-serif;
     margin: 7px;
 }
 
@@ -90,10 +90,10 @@
 }
 
 .eDash-table2-div{
-    margin: 5px;
+    margin-top: 20px;
     padding: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-bottom: 20px;
+    font-family: Roboto, sans-serif;
+    margin-bottom: 25px;
 }
 
 .eDash-table2{
@@ -138,6 +138,20 @@
     text-align: center;
     margin-top: 5px;
     padding: 0px;
+}
+
+.eDashCal{    
+    width: 215vh;  
+    justify-content: center;  
+}
+
+.dayPik{
+    margin: auto;
+    background-color: #f7dfe7;
+}
+
+.eDash-calDiv{
+    justify-content: center;
 }
 
 .tr-pad{
