@@ -4,20 +4,12 @@ import Png from '../../assets/images/logos/logo.png';
 import '../../assets/styles/EmployeeDash.css';
 import Footer from '../common/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Calendar from 'react-calendar';
 import Swal from 'sweetalert';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
 
 class EmployeeDash extends React.Component{
-
-    state = {
-        date1: new Date(2019, 0, 4),
-        date2: new Date(2019, 1, 8),
-        date3: new Date(2019, 2, 6),
-        date4: new Date(2019, 3, 10),
-    }
 
     onChange = date => this.setState({ date });
     
@@ -193,24 +185,6 @@ class EmployeeDash extends React.Component{
                              />
                         </div>
 
-                        
-
-                        {/* <Calendar className='col-md-3' onChange={this.onChange} 
-                            value={this.state.date1}
-                            showNavigation={false}/>
-                        
-                        <Calendar className='col-md-3' onChange={this.onChange} 
-                            value={this.state.date2}
-                            showNavigation={false}/>
-
-                        
-                        <Calendar className='col-md-3' onChange={this.onChange} 
-                            value={this.state.date3}
-                            showNavigation={false}/>
-
-                        <Calendar className='col-md-3' onChange={this.onChange} 
-                            value={this.state.date4}
-                            showNavigation={false}/> */}
                     </div> 
                     <div className="">
                         <div class="eDash-table2-div">
