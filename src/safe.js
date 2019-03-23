@@ -5,118 +5,49 @@ import '../../assets/styles/AbsenceRequest.css';
 import Footer from '../common/Footer';
 import Side from '../../assets/images/side2.jpg';
 import Swal from 'sweetalert';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-import FormValidator from '../common/FormValidator';
 class AbsenceRequest extends React.Component{
 
     constructor(props) {
         super(props);
-
-        this.validator = new FormValidator([
-            { 
-                field: 'abReqLeave', 
-                method: 'isEmpty', 
-                validWhen: false, 
-                message: 'Select Leave type.' 
-            },
-            { 
-                field: 'abReqText',
-                method: 'isEmpty', 
-                validWhen: false, 
-                message: 'Reason for Leave is required.'
-            },
-            { 
-                field: 'abReqText', 
-                method: 'matches', 
-                args: [/([a-zA-Z\d]{1}[a-zA-Z\d]*[\s]{0,1}[a-zA-Z\d])+([\s]{0,1}[a-zA-Z\d]+)/],
-                validWhen: true, 
-                message: 'Invalid entry.' 
-            },
-        ]);
     
         this.state = {
-            abReqLeave:"",
-            abReqText: "",
-            validation: this.validator.valid(),
-            dateStart: "",
-            dateEnd: "",
-            today: new Date(),
+          dateStart: "",
+          dateEnd: "",
         };
-
-        this.submitted = false;
+    
+        // this.handleChangestart = this.handleChangestart.bind(this);
+        // this.handleChangeend = this.handleChangeend.bind(this);
+    
+        // this.handleSubmit = this.handleSubmit.bind(this);
       }
     
     handleDateStart = (event) => { 
-        this.setState({dateStart: event.valueOf()});
-        // console.log( );
+        this.setState({dateStart: event.target.value});
     }
     
     handleDateEnd = (event) => {
-        this.setState({dateEnd: event.valueOf()});
-        // console.log(event.valueOf());
-    }
-
-    handleDayChange(selectedDay, modifiers, dayPickerInput) {
-        const input = dayPickerInput.getInput();
-        this.setState({
-          selectedDay,
-          isEmpty: !input.value.trim(),
-          isValidDay: typeof selectedDay !== 'undefined',
-          isDisabled: modifiers.disabled === true,
-        });
-    }
-
-    handleInputChange = event => {
-        event.preventDefault();
-
-        this.setState({[event.target.name]: event.target.value,});  
+        this.setState({dateEnd: event.target.value});
     }
 
     handleLogout  = (e) => {
         e.preventDefault();
         Swal({
-            title: "Logged-out Successfully",
+            title: "Loggedout Successfully",
             icon: "success",
             button: "Okay",
         });
         this.props.history.push('/login');
     }
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        const validation = this.validator.validate(this.state);
-        this.setState({ validation });
-        this.submitted = true;
-
-        if (validation.isValid) {
-        // handle actual form submission here
-            Swal({
-                title: "Request Sent",
-                icon: "success",
-            });
-            
-           // window.location.reload();
-
-            setTimeout(()=>{ window.location.reload() }, 900);
-            
-            //this.props.history.push('/absence-request');
-        }
-    }
-
     render(){
-        const today = new Date();
 
-        let begin = this.state.dateStart;
-        let end = this.state.dateEnd;
+        let begin = Date.parse(this.state.dateStart);
+        let end = Date.parse(this.state.dateEnd);
 
         let duration = (Math.round((end - begin) * (1.1574 * 0.00000001))).toString();
-
-        let validateRequest = this.submitted ? this.validator.validate(this.state) : this.state.validation;
+        console.log(typeof duration);
         
         return(
-
             <div>
                 <div className="abReq-top">
                     <header className="abReq-header">
@@ -166,79 +97,58 @@ class AbsenceRequest extends React.Component{
 
                         <div className="abReq-formPos">
                             <form className="needs-validation abReq-form" noValidate>
-
                                 <div className="form-row">
-
-                                    <div className={`form-group col-md-12 ${validateRequest.abReqLeave.isInValid && 'has-error'}`}>
-                                        <select className="custom-select" 
-                                            name="abReqLeave"
-                                            onChange={this.handleInputChange} 
-                                            id="abReqLeave" required>
-                                            <option value="">--Type of Leave--</option>
+                                    <div className="form-group col-md-12">
+                                        <select className="custom-select" placeholder="Type of Leave" required>
+                                            <option value="">Type of Leave</option>
                                             <option value="maternity">Maternity</option>
                                             <option value="health">Health</option>
                                             <option value="travel">Travel</option>
                                             <option value="education">Education</option>
                                             <option value="liesure">Liesure</option>
                                         </select>
-                                        <span className="help-block abReqError">{validateRequest.abReqLeave.message}</span>
+                                        <div className="invalid-feedback">Select a country</div>
                                     </div>
-
                                 </div>
 
                                 <div className="form-row">
 
                                     <div class="form-group col-md-4 mb-3">
-                                        <label htmlFor="abReqFrom">From</label>
-                                        <DayPickerInput
-                                              dayPickerProps={{
-                                                disabledDays: { before: today },
-                                              }}
+                                        <label htmlFor="abReq-from">From</label>
+                                        <input type="date" 
                                             className="form-control"
-                                            name="abReqFrom" 
-                                            onDayChange={this.handleDateStart}
-                                            id="abReqFrom" required
+                                            name="abReq-from" 
+                                            onChange={this.handleDateStart}
+                                            id="abReq-from" required
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-4 mb-3">
+                                        <label htmlFor="abReq-to">To</label>
+                                        <input type="date" 
+                                            className="form-control"
+                                            name="abReq-to" 
+                                            onChange={this.handleDateEnd}
+                                            id="abReq-to" required
                                         />
                                     </div>
 
-                                    <div class="form-group col-md-4 mb-3">
-                                        <label htmlFor="abReq-from">To</label>
-                                        <DayPickerInput
-                                            dayPickerProps={{
-                                                disabledDays: { before: today },
-                                            }}
-                                            className="form-control"
-                                            name="abReq-to" 
-                                            onDayChange={this.handleDateEnd}
-                                            id="abReq-to" required
-                                        />
-                                    </div> 
 
                                     <div class="form-group col-md-4 mb-3">
                                         <label htmlFor="abReq-dur">Duration</label>
                                         <input type="text" 
                                             class="form-control"
-                                            value={duration <= 0 ? "None" : `${duration} day(s)`}
+                                            value={isNaN(duration)? "None" : `${duration} day(s)`}
                                             id="abReq-dur" disabled/>
                                     </div>
                                 </div>
                                 <div className="form-row">
-                                    <div className={`form-group col-md-12 ${validateRequest.abReqText.isInValid && 'has-error'}`}>
-                                        <textarea class="form-control"
-                                            id="abReqText"
-                                            name="abReqText" 
-                                            placeholder="Reason for Leave"
-                                            onChange={this.handleInputChange}
-                                            rows="6" required
-                                        />
-                                        {/* </textarea> */}
-                                        <span className="help-block abReqError">{validateRequest.abReqText.message}</span>
+                                    <div class="form-group col-md-12">
+                                        <textarea class="form-control" id="abReqText" rows="5"></textarea>
                                     </div>                                
                                 </div>
 
                                 <div className="form-row abReq-submit">
-                                    <button type="submit"
-                                        onClick={this.handleFormSubmit} 
+                                    <button type="submit" 
                                     className="btn btn-primary">Submit Request</button>        
                                 </div>
                                 

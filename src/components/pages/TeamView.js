@@ -11,7 +11,7 @@ class TeamView extends React.Component{
     handleLogout  = (e) => {
         e.preventDefault();
         Swal({
-            title: "Loggedout Successfully",
+            title: "Logged-out Successfully",
             // text: "You clicked the button!",
             icon: "success",
             button: "Okay",

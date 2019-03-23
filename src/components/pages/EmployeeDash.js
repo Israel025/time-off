@@ -24,7 +24,7 @@ class EmployeeDash extends React.Component{
     handleLogout  = (e) => {
         e.preventDefault();
         Swal({
-            title: "Loggedout Successfully",
+            title: "Logged-out Successfully",
             icon: "success",
             button: "Okay",
         });
