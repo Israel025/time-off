@@ -18,7 +18,6 @@ class TeamView extends React.Component{
             timer: 2000,
         });
         this.props.history.push('/login');
-
     }
 
     render(){
