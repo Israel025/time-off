@@ -64,10 +64,11 @@ class Login extends React.Component{
         if (validation.isValid) {
         // handle actual form submission here
             Swal({
-                title: "Credentials Confirmed!",
+                title: "Welcome!",
                 // text: "You clicked the button!",
                 icon: "success",
                 button: "Continue",
+                timer: 2000,
             });
             this.props.history.push('/employee-dash');
             // return <Link to="/employee-dash"/>;    

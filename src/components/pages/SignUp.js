@@ -215,6 +215,7 @@ class SignUp extends React.Component{
                     title: "Sign-up Successful",
                     icon: "success",
                     button: "Okay",
+                    timer: 2000,
                 });
                 
                 this.props.history.push('/login');

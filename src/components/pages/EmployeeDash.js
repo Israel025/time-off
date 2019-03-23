@@ -27,6 +27,7 @@ class EmployeeDash extends React.Component{
             title: "Logged-out Successfully",
             icon: "success",
             button: "Okay",
+            timer: 2000,
         });
         this.props.history.push('/login');
 

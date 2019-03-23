@@ -8,6 +8,7 @@ import Swal from 'sweetalert';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import FormValidator from '../common/FormValidator';
+
 class AbsenceRequest extends React.Component{
 
     constructor(props) {
@@ -39,37 +40,33 @@ class AbsenceRequest extends React.Component{
             abReqLeave:"",
             abReqText: "",
             validation: this.validator.valid(),
-            dateStart: "",
+            dateStart: new Date(),
             dateEnd: "",
-            today: new Date(),
+            beforeActive: new Date(),
+            afterActive: new Date(),
+            duration: "",
         };
 
         this.submitted = false;
+
       }
-    
-    handleDateStart = (event) => { 
+
+    handleDateStart = (event, captureActiveDates) => { 
         this.setState({dateStart: event.valueOf()});
-        // console.log( );
+        this.setState({beforeActive: new Date(event.valueOf())});
+        this.setState({afterActive: ""});
     }
     
     handleDateEnd = (event) => {
         this.setState({dateEnd: event.valueOf()});
-        // console.log(event.valueOf());
     }
 
-    handleDayChange(selectedDay, modifiers, dayPickerInput) {
-        const input = dayPickerInput.getInput();
-        this.setState({
-          selectedDay,
-          isEmpty: !input.value.trim(),
-          isValidDay: typeof selectedDay !== 'undefined',
-          isDisabled: modifiers.disabled === true,
-        });
+    setDuration = (event) => {
+        this.setState({duration: event.target.value})
     }
 
     handleInputChange = event => {
         event.preventDefault();
-
         this.setState({[event.target.name]: event.target.value,});  
     }
 
@@ -79,6 +76,7 @@ class AbsenceRequest extends React.Component{
             title: "Logged-out Successfully",
             icon: "success",
             button: "Okay",
+            timer: 2000,
         });
         this.props.history.push('/login');
     }
@@ -90,18 +88,25 @@ class AbsenceRequest extends React.Component{
         this.setState({ validation });
         this.submitted = true;
 
-        if (validation.isValid) {
+        if (validation.isValid && this.state.duration !== "") {
         // handle actual form submission here
             Swal({
                 title: "Request Sent",
                 icon: "success",
+                timer: 900,
             });
-            
-           // window.location.reload();
 
-            setTimeout(()=>{ window.location.reload() }, 900);
-            
+            setTimeout(()=>{ window.location.reload() }, 1000);            
             //this.props.history.push('/absence-request');
+        }
+        else{
+            Swal({
+                title: "Fill all fields correctly ",
+                className: "red-bg",
+                icon: "error",
+                dangerMode: true,
+                button: "Okay",
+            });
         }
     }
 
@@ -109,9 +114,11 @@ class AbsenceRequest extends React.Component{
         const today = new Date();
 
         let begin = this.state.dateStart;
+        
         let end = this.state.dateEnd;
+        let total = (Math.round((end - begin) * (1.1574 * 0.00000001)));
 
-        let duration = (Math.round((end - begin) * (1.1574 * 0.00000001))).toString();
+        let duration = total <= 0 ? "" : `${total} day(s)`
 
         let validateRequest = this.submitted ? this.validator.validate(this.state) : this.state.validation;
         
@@ -196,6 +203,7 @@ class AbsenceRequest extends React.Component{
                                               }}
                                             className="form-control"
                                             name="abReqFrom" 
+                                            value={new Date().toLocaleDateString()}
                                             onDayChange={this.handleDateStart}
                                             id="abReqFrom" required
                                         />
@@ -205,7 +213,8 @@ class AbsenceRequest extends React.Component{
                                         <label htmlFor="abReq-from">To</label>
                                         <DayPickerInput
                                             dayPickerProps={{
-                                                disabledDays: { before: today },
+                                                disabledDays: { before: this.state.beforeActive,
+                                                after: this.state.afterActive },
                                             }}
                                             className="form-control"
                                             name="abReq-to" 
@@ -218,7 +227,9 @@ class AbsenceRequest extends React.Component{
                                         <label htmlFor="abReq-dur">Duration</label>
                                         <input type="text" 
                                             class="form-control"
-                                            value={duration <= 0 ? "None" : `${duration} day(s)`}
+                                            placeholder="None"
+                                            value={duration}
+                                            onChange={this.setDuration}
                                             id="abReq-dur" disabled/>
                                     </div>
                                 </div>

@@ -15,6 +15,7 @@ class TeamView extends React.Component{
             // text: "You clicked the button!",
             icon: "success",
             button: "Okay",
+            timer: 2000,
         });
         this.props.history.push('/login');
 
