@@ -10,6 +10,22 @@ import AbsenceRequest from './components/pages/AbsenceRequest';
 import Teamview from './components/pages/TeamView';
 
 class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {}
+        // this.connecToServer = this.connecToServer.bind(this);
+    }
+    
+    connecToServer = () => {
+        fetch('/');
+    }
+    
+    componentDidMount() {
+        this.connecToServer();
+    }
+
+
     render(){
       return (
             <React.Fragment>

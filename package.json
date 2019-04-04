@@ -10,6 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.0",
     "horizontal-calendar": "^1.0.7",
     "jquery": "^3.3.1",
     "node-holidayapi": "^1.0.2",
@@ -53,5 +54,4 @@
     "react-router-dom": "^4.4.0-beta.7"
   },
   "proxy": "http://localhost:3001"
-
 }
