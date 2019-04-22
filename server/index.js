@@ -4,10 +4,8 @@ const port  = process.env.PORT || 3310;
 const path = require("path");
 const extRequest = require("./handler");
 
-
 const app = express();
 const server = http.createServer(app);
-
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
