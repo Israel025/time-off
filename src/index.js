@@ -4,6 +4,7 @@ import './assets/styles/index.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import "./assets/styles/normalize.css";
 import Popper from 'popper.js';
 import $ from 'jquery';
 // import '../src/assets/styles/resetCss.css';
