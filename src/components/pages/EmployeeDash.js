@@ -46,7 +46,7 @@ class EmployeeDash extends React.Component {
         user: res.data
       });
     } catch (err) {
-      if(localStorage.getItem("timeoff-token")){
+      if (localStorage.getItem("timeoff-token")) {
         localStorage.removeItem("timeoff-token");
       }
       console.log(err.response);
@@ -70,9 +70,9 @@ class EmployeeDash extends React.Component {
   };
 
   render() {
-    if (this.state.loading){
-      return <p>Pape Loading...</p>
-    };
+    if (this.state.loading) {
+      return <p>Pape Loading...</p>;
+    }
 
     return (
       <div>
@@ -125,7 +125,10 @@ class EmployeeDash extends React.Component {
         <div className="eDash-body">
           <div>
             <div className="eDash-top-text col-md-3">
-              <h2>Welcome: {this.state.user.user.first_name} {this.state.user.user.last_name}</h2>
+              <h2>
+                Welcome: {this.state.user.first_name}{" "}
+                {this.state.user.user.last_name}
+              </h2>
               <p>...your calendar for the year 2019</p>
             </div>
           </div>
