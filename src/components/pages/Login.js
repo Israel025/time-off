@@ -1,6 +1,8 @@
 import React from 'react';
+import env from "../../env";
 import '../../assets/styles/Login.css';
 import Header from '../common/Header';
+import axios from "axios";
 import Footer from '../common/Footer';
 import Side from '../../assets/images/side2.jpg';
 import SignupBtn from '../common/SignupBtn';
@@ -53,8 +55,15 @@ class Login extends React.Component{
             [event.target.name]: event.target.value,
         });
     }
+
+    componentDidMount(){
+        const token = localStorage.getItem("timeoff-token");
+        if(token){
+            return  this.props.history.push('/employee-dash');
+        }
+    }
     
-    handleFormSubmit = event => {
+    handleFormSubmit = async event => {
         event.preventDefault();
 
         const validation = this.validator.validate(this.state);
@@ -62,15 +71,44 @@ class Login extends React.Component{
         this.submitted = true;
 
         if (validation.isValid) {
+            let loginData = {
+                email: this.state.loginmail,
+                password: this.state.loginpass
+            };
+
+            try {
+                const res = await axios.post(`${env.api}/user/login`, loginData);
+
+                // console.log(res.data);
+
+                const token = res.data.token;
+
+                localStorage.setItem("timeoff-token", token);
+
+                Swal({
+                    title: "Welcome!",
+                    // text: "You clicked the button!",
+                    icon: "success",
+                    button: "Continue",
+                    timer: 2000,
+                });
+
+                this.props.history.push('/employee-dash');
+                
+            } catch (err) {
+                Swal({
+                    title: "Invalid Login Details",
+                    className: "red-bg",
+                    icon: "error",
+                    dangerMode: true,
+                    button: "Okay"
+                });
+                console.log("An error occured", err.response);
+                this.props.history.push("/login");                
+            }
+            
         // handle actual form submission here
-            Swal({
-                title: "Welcome!",
-                // text: "You clicked the button!",
-                icon: "success",
-                button: "Continue",
-                timer: 2000,
-            });
-            this.props.history.push('/employee-dash');
+            
             // return <Link to="/employee-dash"/>;    
         }
     }

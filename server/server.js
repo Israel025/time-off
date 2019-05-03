@@ -3,8 +3,8 @@ const port  = process.env.PORT || 3001;
 const path = require("path");
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
-// const extRequest = require("./handler");
-const extRequest = require("../build/");
+const extRequest = require("./handler");
+// const extRequest = require("../build/");
 
 
 const app = express();
@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, "../build/")));
   //
   app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname = "../build/index.html"));
+    res.sendFile(path.join(__dirname = "../build/index.html"));
   })
 }
 
