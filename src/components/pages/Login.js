@@ -81,7 +81,7 @@ class Login extends React.Component{
 
                 // console.log(res.data);
 
-                const token = res.data.token;
+                const token = res.data.data.token;
 
                 localStorage.setItem("timeoff-token", token);
 
