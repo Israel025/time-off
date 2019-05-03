@@ -244,11 +244,11 @@ class SignUp extends React.Component {
 
     this.submitted = false;
   }
-  componentDidMount(){
+  componentDidMount() {
     const token = localStorage.getItem("timeoff-token");
 
-    if(token){
-      return this.props.history.push("/employee-dash")
+    if (token) {
+      return this.props.history.push("/employee-dash");
     }
   }
 
@@ -289,7 +289,7 @@ class SignUp extends React.Component {
       try {
         const res = await axios.post(`${env.api}/user/`, regData);
 
-        const token = res.data.data.token;
+        const token = res.data.token;
 
         localStorage.setItem("timeoff-token", token);
 
