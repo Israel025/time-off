@@ -41,9 +41,11 @@ class EmployeeDash extends React.Component {
         }
       });
 
+      //console.log(res.data.data);
+
       this.setState({
         loading: false,
-        user: res.data
+        user: res.data.data
       });
     } catch (err) {
       if (localStorage.getItem("timeoff-token")) {
@@ -71,7 +73,7 @@ class EmployeeDash extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <p>Pape Loading...</p>;
+      return <p>Page Loading...</p>;
     }
 
     return (
@@ -86,29 +88,29 @@ class EmployeeDash extends React.Component {
               </div>
               <div className="eDash-top-right">
                 <div className="eDash-admin-links">
-                  <ul class="nav nav-pills">
-                    <li class="nav-item eDash-links">
+                  <ul className="nav nav-pills">
+                    <li className="nav-item eDash-links">
                       <Link to="/employee-dash">
-                        <p class="nav-link active btn-sm">Employee Calendar</p>
+                        <p className="nav-link active btn-sm">Employee Calendar</p>
                       </Link>
                     </li>
-                    <li class="nav-item eDash-links">
+                    <li className="nav-item eDash-links">
                       <Link to="/team-view">
-                        <p class="nav-link btn-sm eDash-link-color">
+                        <p className="nav-link btn-sm eDash-link-color">
                           Team View
                         </p>
                       </Link>
                     </li>
-                    <li class="nav-item eDash-links">
+                    <li className="nav-item eDash-links">
                       <Link to="/absence-request">
-                        <p class="nav-link btn-sm eDash-link-color">
+                        <p className="nav-link btn-sm eDash-link-color">
                           New Absence
                         </p>
                       </Link>
                     </li>
                   </ul>
                 </div>
-                <div class="logout-div">
+                <div className="logout-div">
                   <Link to="/">
                     <button
                       className="btn btn-danger eDash-logout-btn"
@@ -127,39 +129,39 @@ class EmployeeDash extends React.Component {
             <div className="eDash-top-text col-md-3">
               <h2>
                 Welcome: {this.state.user.first_name}{" "}
-                {this.state.user.user.last_name}
+                {this.state.user.last_name}
               </h2>
               <p>...your calendar for the year 2019</p>
             </div>
           </div>
           <div>
             <div className="card-group">
-              <div class="card border-light mb-3">
-                <div class="card-header">Statistics</div>
-                <div class="card-body">
+              <div className="card border-light mb-3">
+                <div className="card-header">Statistics</div>
+                <div className="card-body">
                   <div>
                     <h1 className="stat-size">6.5</h1>
                   </div>
                   <hr />
-                  <p class="card-text">
+                  <p className="card-text">
                     Days remaining out of 10 in allowance{" "}
                   </p>
                 </div>
               </div>
 
-              <div class="card border-light mb-3">
-                <div class="card-header">Used so far</div>
-                <div class="card-body">
+              <div className="card border-light mb-3">
+                <div className="card-header">Used so far</div>
+                <div className="card-body">
                   <div>
-                    <table class="table table-borderless table-sm">
-                      <tbody class="tbody">
+                    <table className="table table-borderless table-sm">
+                      <tbody className="tbody">
                         <tr>
-                          <td class="tr-left">Holiday:</td>
-                          <td class="tr-right">12.5</td>
+                          <td className="tr-left">Holiday:</td>
+                          <td className="tr-right">12.5</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Sick Leave:</td>
-                          <td class="tr-right">2 out of 10</td>
+                          <td className="tr-left">Sick Leave:</td>
+                          <td className="tr-right">2 out of 10</td>
                         </tr>
                       </tbody>
                     </table>
@@ -167,23 +169,23 @@ class EmployeeDash extends React.Component {
                 </div>
               </div>
 
-              <div class="card border-light mb-3">
-                <div class="card-header">Available types</div>
-                <div class="card-body">
+              <div className="card border-light mb-3">
+                <div className="card-header">Available types</div>
+                <div className="card-body">
                   <div>
-                    <table class="table table-borderless table-sm">
-                      <tbody class="tbody">
+                    <table className="table table-borderless table-sm">
+                      <tbody className="tbody">
                         <tr>
-                          <td class="tr-left">Travel</td>
+                          <td className="tr-left">Travel</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Maternity</td>
+                          <td className="tr-left">Maternity</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Leisure Leave</td>
+                          <td className="tr-left">Leisure Leave</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Sick Leave (up to 8 days)</td>
+                          <td className="tr-left">Sick Leave (up to 8 days)</td>
                         </tr>
                       </tbody>
                     </table>
@@ -191,23 +193,23 @@ class EmployeeDash extends React.Component {
                 </div>
               </div>
 
-              <div class="card border-light mb-3">
-                <div class="card-header">Details</div>
-                <div class="card-body">
+              <div className="card border-light mb-3">
+                <div className="card-header">Details</div>
+                <div className="card-body">
                   <div>
-                    <table class="table table-borderless table-sm">
-                      <tbody class="tbody">
+                    <table className="table table-borderless table-sm">
+                      <tbody className="tbody">
                         <tr>
-                          <td class="tr-left">Supervisor</td>
-                          <td class="tr-right">Mayowa Todunu</td>
+                          <td className="tr-left">Supervisor</td>
+                          <td className="tr-right">Mayowa Todunu</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Department</td>
-                          <td class="tr-right">Full-stack Dev</td>
+                          <td className="tr-left">Department</td>
+                          <td className="tr-right">Full-stack Dev</td>
                         </tr>
                         <tr>
-                          <td class="tr-left">Allowance in 2019:</td>
-                          <td class="tr-right">15 days</td>
+                          <td className="tr-left">Allowance in 2019:</td>
+                          <td className="tr-right">15 days</td>
                         </tr>
                       </tbody>
                     </table>
@@ -247,11 +249,11 @@ class EmployeeDash extends React.Component {
             </div>
           </div>
           <div className="">
-            <div class="eDash-table2-div">
+            <div className="eDash-table2-div">
               <div className="dash-txt">
-                <p class="eDash-tbl2-txt">All Absences</p>
+                <p className="eDash-tbl2-txt">All Absences</p>
               </div>
-              <table class="table table-hover eDash-table2">
+              <table className="table table-hover eDash-table2">
                 <thead>
                   <tr>
                     <th scope="col">Type</th>
@@ -269,7 +271,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-11-19 - 2018-11-24</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>
@@ -283,7 +285,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-12-04 - 2018-12-06</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>
@@ -297,7 +299,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-11-19 - 2018-11-24</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>
@@ -311,7 +313,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-11-19 - 2018-11-24</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>
@@ -325,7 +327,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-11-19 - 2018-11-24</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>
@@ -339,7 +341,7 @@ class EmployeeDash extends React.Component {
                     <td>From 2018-11-19 - 2018-11-24</td>
                     <td>Admin User</td>
                     <td>
-                      <button class="btn btn-light">
+                      <button className="btn btn-light">
                         <FontAwesomeIcon icon="trash-alt" />
                       </button>
                     </td>

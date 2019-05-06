@@ -289,7 +289,9 @@ class SignUp extends React.Component {
       try {
         const res = await axios.post(`${env.api}/user/`, regData);
 
-        const token = res.data.token;
+        const token = res.data.data.token;
+
+        //console.log(token);
 
         localStorage.setItem("timeoff-token", token);
 
