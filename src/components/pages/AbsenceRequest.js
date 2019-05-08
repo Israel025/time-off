@@ -47,7 +47,7 @@ class AbsenceRequest extends React.Component {
 
     this.state = {
       abReqLeave: "",
-      abReqText: "",      
+      abReqText: "",
       dateStart: new Date(),
       dateEnd: "",
       validation: this.validator.valid(),
@@ -118,18 +118,14 @@ class AbsenceRequest extends React.Component {
         leave_reason: this.state.abReqText
       };
 
-      const token = localStorage.getItem("timeoff-token");   
+      const token = localStorage.getItem("timeoff-token");
 
       try {
-        const res = await axios.post(`${env.api}/leave/`, 
-        leaveData,
-        {
+        const res = await axios.post(`${env.api}/leave/`, leaveData, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`
           }
-        }
-        
-        );
+        });
 
         console.log(res);
 
@@ -138,7 +134,7 @@ class AbsenceRequest extends React.Component {
           icon: "success",
           timer: 900
         });
-  
+
         setTimeout(() => {
           window.location.reload();
         }, 1000);
@@ -146,8 +142,7 @@ class AbsenceRequest extends React.Component {
         //this.props.history.push('/absence-request');
       } catch (err) {
         console.log("an error occured", err);
-      }      
-      
+      }
     } else {
       Swal({
         title: "Fill all fields correctly ",

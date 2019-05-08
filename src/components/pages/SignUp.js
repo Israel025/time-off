@@ -335,7 +335,6 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupFname
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupFname">First name</label>
                   <input
                     type="text"
                     className="form-control"
@@ -354,7 +353,7 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupLname
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupLname">Last name</label>
+                  
                   <input
                     type="text"
                     className="form-control"
@@ -371,28 +370,10 @@ class SignUp extends React.Component {
               </div>
 
               <div className="form-row">
-                {/* <div className={`col-md-4 mb-3 ${validateSignup.signupEmail.isInValid && 'has-error'}`}>
-                                <label htmlFor="signupEmail">Email Address</label>
-                                <div className="input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroupPrepend">@</span>
-                                    </div>
-                                    <input type="email" 
-                                        className="form-control" 
-                                        id="signupEmail" 
-                                        name="signupEmail"
-                                        onChange={this.handleInputChange}
-                                        placeholder="user@domain.com" required
-                                    />
-                                    <span className="help-block SignupError">{validateSignup.signupEmail.message}</span>
-                                </div>
-                            </div> */}
-
                 <div
                   className={`col-md-4 mb-3 ${validateSignup.signupEmail
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupEmail">Email Address</label>
                   <input
                     type="email"
                     className="form-control"
@@ -411,7 +392,6 @@ class SignUp extends React.Component {
                   className={`col-md-4 mb-3 ${validateSignup.signupPass
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupPass">Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -430,7 +410,6 @@ class SignUp extends React.Component {
                   className={`col-md-4 mb-3 ${validateSignup.signupPassConfirm
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupPassConfirm">Confirm Password</label>
                   <input
                     type="password"
                     className="form-control"
@@ -451,14 +430,13 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupCoy
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupCoy">Organisation</label>
                   <input
                     type="text"
                     className="form-control"
                     id="signupCoy"
                     name="signupCoy"
                     onChange={this.handleInputChange}
-                    placeholder="company name"
+                    placeholder="your company's name"
                     required
                   />
                   <span className="help-block SignupError">
@@ -470,14 +448,13 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupPost
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupPost">Designation</label>
                   <input
                     type="text"
                     className="form-control"
                     id="signupPost"
                     name="signupPost"
                     onChange={this.handleInputChange}
-                    placeholder="your post in your company"
+                    placeholder="your designation in your company"
                     required
                   />
                   <span className="help-block SignupError">
@@ -490,7 +467,6 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupDept
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupDept">Department</label>
                   <input
                     type="text"
                     className="form-control"
@@ -509,14 +485,13 @@ class SignUp extends React.Component {
                   className={`col-md-6 mb-3 ${validateSignup.signupManager
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupManager">Manager</label>
                   <input
                     type="text"
                     className="form-control"
                     id="signupManager"
                     name="signupManager"
                     onChange={this.handleInputChange}
-                    placeholder="manager's name"
+                    placeholder="your manager's name"
                     required
                   />
                   <span className="help-block SignupError">
@@ -530,14 +505,13 @@ class SignUp extends React.Component {
                   className={`form-group col-md-3 ${validateSignup.signupPhone
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupPhone">Telephone Number</label>
                   <input
                     type="phone"
                     className="form-control"
                     id="signupPhone"
                     name="signupPhone"
                     onChange={this.handleInputChange}
-                    placeholder="08012345678"
+                    placeholder="Tel: 08012345678"
                     required
                   />
                   <span className="help-block SignupError">
@@ -549,12 +523,12 @@ class SignUp extends React.Component {
                   className={`form-group col-md-3 ${validateSignup.signupDob
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupDob">Date of Birth</label>
                   <input
                     type="date"
                     className="form-control"
                     name="signupDob"
                     onChange={this.handleInputChange}
+                    placeholder="Date of Birth"
                     id="signupDob"
                     required
                   />
@@ -564,7 +538,6 @@ class SignUp extends React.Component {
                 </div>
 
                 <div className="form-group col-md-3">
-                  <label htmlFor="signupGender">Gender</label>
                   <select
                     className="custom-select"
                     name="signupGender"
@@ -579,14 +552,13 @@ class SignUp extends React.Component {
                 </div>
 
                 <div className="form-group col-md-3">
-                  <label htmlFor="signupMarital">Marital Status</label>
                   <select
                     className="custom-select"
                     name="signupMstatus"
                     onChange={this.handleInputChange}
                     required
                   >
-                    <option value="">Select Status</option>
+                    <option value="">Marital Status</option>
                     <option value="single">Single</option>
                     <option value="married">Married</option>
                     <option value="engaged">Engaged</option>
@@ -597,7 +569,6 @@ class SignUp extends React.Component {
 
               <div className="form-row">
                 <div className="form-group col-md-3 mb-3">
-                  <label htmlFor="signupCountry">Country</label>
                   <select
                     className="custom-select"
                     onChange={this.handleInputChange}
@@ -620,7 +591,6 @@ class SignUp extends React.Component {
                   className={`col-md-5 mb-3 ${validateSignup.signupCity
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupCity">City</label>
                   <input
                     type="text"
                     className="form-control"
@@ -639,7 +609,6 @@ class SignUp extends React.Component {
                   className={`col-md-4 mb-3 ${validateSignup.signupState
                     .isInValid && "has-error"}`}
                 >
-                  <label htmlFor="signupState">State</label>
                   <input
                     type="text"
                     className="form-control"

@@ -131,7 +131,7 @@ class EmployeeDash extends React.Component {
                 Welcome: {this.state.user.first_name}{" "}
                 {this.state.user.last_name}
               </h2>
-              <p>...your calendar for the year 2019</p>
+              <p>...your calendar for the year {new Date().getFullYear()}</p>
             </div>
           </div>
           <div>
@@ -185,7 +185,7 @@ class EmployeeDash extends React.Component {
                           <td className="tr-left">Leisure Leave</td>
                         </tr>
                         <tr>
-                          <td className="tr-left">Sick Leave (up to 8 days)</td>
+                          <td className="tr-left">Health Leave (up to 8 days)</td>
                         </tr>
                       </tbody>
                     </table>
@@ -201,11 +201,11 @@ class EmployeeDash extends React.Component {
                       <tbody className="tbody">
                         <tr>
                           <td className="tr-left">Supervisor</td>
-                          <td className="tr-right">Mayowa Todunu</td>
+                          <td className="tr-right">{this.state.user.manager_name}</td>
                         </tr>
                         <tr>
                           <td className="tr-left">Department</td>
-                          <td className="tr-right">Full-stack Dev</td>
+                          <td className="tr-right">{this.state.user.department}</td>
                         </tr>
                         <tr>
                           <td className="tr-left">Allowance in 2019:</td>
@@ -259,7 +259,7 @@ class EmployeeDash extends React.Component {
                     <th scope="col">Type</th>
                     <th scope="col">Deducted</th>
                     <th scope="col">Dates</th>
-                    <th scope="col">Apprroved by</th>
+                    <th scope="col">Checked by</th>
                     <th scope="col" />
                     <th scope="col">Status</th>
                   </tr>
