@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
-
 class EmployeeDash extends React.Component {
   constructor(props) {
     super(props);
