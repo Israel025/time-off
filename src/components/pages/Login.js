@@ -8,8 +8,6 @@ import Side from "../../assets/images/side2.jpg";
 import SignupBtn from "../common/SignupBtn";
 import FormValidator from "../common/FormValidator";
 import { Link } from "react-router-dom";
-// import { Route, Switch } from 'react-router-dom';
-// import EmployeeDash from '../pages/EmployeeDash';
 import Swal from "sweetalert";
 
 class Login extends React.Component {
@@ -71,7 +69,7 @@ class Login extends React.Component {
     this.submitted = true;
 
     if (validation.isValid) {
-      let loginData = {
+      const loginData = {
         email: this.state.loginmail,
         password: this.state.loginpass
       };
@@ -79,17 +77,12 @@ class Login extends React.Component {
       try {
         const res = await axios.post(`${env.api}/user/login`, loginData);
 
-        // console.log(res.data);
-
         const token = res.data.data.token;
-
-        //console.log(token);
 
         localStorage.setItem("timeoff-token", token);
 
         Swal({
           title: "Welcome!",
-          // text: "You clicked the button!",
           icon: "success",
           button: "Continue",
           timer: 2000

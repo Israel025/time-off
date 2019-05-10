@@ -7,8 +7,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert";
 
 class TeamView extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+      user: null
+    };
+  }
+
+  async componentDidMount() {
+    try {
+     const token = localStorage.getItem("timeoff-token");
+     if (!token) {
+       Swal({
+         title: "Invalid access mode, Login or Signup",
+         className: "red-bg",
+         icon: "error",
+         dangerMode: true,
+         button: "Okay"
+       });
+       return this.props.history.push("/login");
+     }
+     this.setState({
+      loading: false
+    });
+      
+    } catch (err) {
+      
+     if(localStorage.getItem("timeoff-token")) {
+        localStorage.removeItem("timeoff-token");
+       }
+      this.props.history.push("/login");     
+    }
+     
+   }
+
   handleLogout = e => {
     e.preventDefault();
+    localStorage.removeItem("timeoff-token");
     Swal({
       title: "Logged-out Successfully",
       // text: "You clicked the button!",
@@ -20,6 +57,39 @@ class TeamView extends React.Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return (
+        <div
+          className="d-flex justify-content-center"
+          style={{ margin: "15em auto auto auto" }}
+        >
+          <div className="spinner-grow text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-success" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-danger" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-warning" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-dark" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <button
+            className="btn btn-success btn-lg"
+            style={{ fontWeight: "bold" }}
+            type="button"
+            disabled
+          >
+            Loading...
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div className="tView-top">

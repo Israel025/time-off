@@ -268,7 +268,7 @@ class SignUp extends React.Component {
     this.submitted = true;
 
     if (validation.isValid) {
-      let regData = {
+      const regData = {
         first_name: this.state.signupFname,
         last_name: this.state.signupLname,
         email: this.state.signupEmail,
@@ -291,8 +291,6 @@ class SignUp extends React.Component {
 
         const token = res.data.data.token;
 
-        //console.log(token);
-
         localStorage.setItem("timeoff-token", token);
 
         Swal({
@@ -306,8 +304,6 @@ class SignUp extends React.Component {
       } catch (err) {
         console.log("an error occured", err);
       }
-
-      // handle actual form submission here
     }
   };
 

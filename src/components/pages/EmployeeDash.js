@@ -26,7 +26,7 @@ class EmployeeDash extends React.Component {
 
       if (!token) {
         Swal({
-          title: "Invalid mode of entry, Login or Signup",
+          title: "Invalid access mode, Login or Signup",
           className: "red-bg",
           icon: "error",
           dangerMode: true,
@@ -41,8 +41,6 @@ class EmployeeDash extends React.Component {
         }
       });
 
-      //console.log(res.data.data);
-
       this.setState({
         loading: false,
         user: res.data.data
@@ -51,7 +49,7 @@ class EmployeeDash extends React.Component {
       if (localStorage.getItem("timeoff-token")) {
         localStorage.removeItem("timeoff-token");
       }
-      console.log(err.response);
+      // console.log(err.response);
       this.props.history.push("/login");
     }
   }
@@ -73,7 +71,36 @@ class EmployeeDash extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <p>Page Loading...</p>;
+      return (
+        <div
+          className="d-flex justify-content-center"
+          style={{ margin: "15em auto auto auto" }}
+        >
+          <div className="spinner-grow text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-success" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-danger" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-warning" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-dark" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <button
+            className="btn btn-success btn-lg"
+            style={{ fontWeight: "bold" }}
+            type="button"
+            disabled
+          >
+            Loading...
+          </button>
+        </div>
+      );
     }
 
     return (
@@ -91,7 +118,9 @@ class EmployeeDash extends React.Component {
                   <ul className="nav nav-pills">
                     <li className="nav-item eDash-links">
                       <Link to="/employee-dash">
-                        <p className="nav-link active btn-sm">Employee Calendar</p>
+                        <p className="nav-link active btn-sm">
+                          Employee Calendar
+                        </p>
                       </Link>
                     </li>
                     <li className="nav-item eDash-links">
@@ -185,7 +214,9 @@ class EmployeeDash extends React.Component {
                           <td className="tr-left">Leisure Leave</td>
                         </tr>
                         <tr>
-                          <td className="tr-left">Health Leave (up to 8 days)</td>
+                          <td className="tr-left">
+                            Health Leave (up to 8 days)
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -201,11 +232,15 @@ class EmployeeDash extends React.Component {
                       <tbody className="tbody">
                         <tr>
                           <td className="tr-left">Supervisor</td>
-                          <td className="tr-right">{this.state.user.manager_name}</td>
+                          <td className="tr-right">
+                            {this.state.user.manager_name}
+                          </td>
                         </tr>
                         <tr>
                           <td className="tr-left">Department</td>
-                          <td className="tr-right">{this.state.user.department}</td>
+                          <td className="tr-right">
+                            {this.state.user.department}
+                          </td>
                         </tr>
                         <tr>
                           <td className="tr-left">Allowance in 2019:</td>

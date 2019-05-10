@@ -51,19 +51,20 @@ class AbsenceRequest extends React.Component {
       dateStart: new Date(),
       dateEnd: "",
       validation: this.validator.valid(),
-      beforeActive: new Date(),
-      afterActive: new Date()
+      today: new Date(),
+      backDate: new Date(),
+      forwardDate: new Date (),
+      loading: true
     };
-
     this.submitted = false;
   }
 
-  componentDidMount() {
+ async componentDidMount() {
+   try {
     const token = localStorage.getItem("timeoff-token");
-
     if (!token) {
       Swal({
-        title: "Invalid mode of entry, Login or Signup",
+        title: "Invalid access mode, Login or Signup",
         className: "red-bg",
         icon: "error",
         dangerMode: true,
@@ -71,21 +72,28 @@ class AbsenceRequest extends React.Component {
       });
       return this.props.history.push("/login");
     }
+    this.setState({
+      loading: false
+    });
+     
+   } catch (err) {
+     
+    if(localStorage.getItem("timeoff-token")) {
+       localStorage.removeItem("timeoff-token");
+      }
+     this.props.history.push("/login");     
+   }
+    
   }
-
   handleDateStart = event => {
     this.setState({ dateStart: event.valueOf() });
-    this.setState({ beforeActive: new Date(event.valueOf()) });
-    this.setState({ afterActive: "" });
+    this.setState({ backDate: new Date(event.valueOf()) });
+    this.setState({ forwardDate: "" });
   };
 
   handleDateEnd = event => {
     this.setState({ dateEnd: event.valueOf() });
   };
-
-  // setDuration = event => {
-  //   this.setState({ duration: event.target.value });
-  // };
 
   handleInputChange = event => {
     event.preventDefault();
@@ -94,6 +102,7 @@ class AbsenceRequest extends React.Component {
 
   handleLogout = e => {
     e.preventDefault();
+    localStorage.removeItem("timeoff-token");
     Swal({
       title: "Logged-out Successfully",
       icon: "success",
@@ -111,13 +120,12 @@ class AbsenceRequest extends React.Component {
     this.submitted = true;
 
     if (validation.isValid) {
-      let leaveData = {
+      const leaveData = {
         leave_type: this.state.abReqLeave,
         date_start: this.state.dateStart,
         date_end: this.state.dateEnd,
         leave_reason: this.state.abReqText
       };
-
       const token = localStorage.getItem("timeoff-token");
 
       try {
@@ -138,8 +146,6 @@ class AbsenceRequest extends React.Component {
         setTimeout(() => {
           window.location.reload();
         }, 1000);
-
-        //this.props.history.push('/absence-request');
       } catch (err) {
         console.log("an error occured", err);
       }
@@ -155,10 +161,42 @@ class AbsenceRequest extends React.Component {
   };
 
   render() {
-    const today = new Date();
 
+    if (this.state.loading) {
+      return (
+        <div
+          className="d-flex justify-content-center"
+          style={{ margin: "15em auto auto auto" }}
+        >
+          <div className="spinner-grow text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-success" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-danger" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-warning" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <div className="spinner-grow text-dark" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+          <button
+            className="btn btn-success btn-lg"
+            style={{ fontWeight: "bold" }}
+            type="button"
+            disabled
+          >
+            Loading...
+          </button>
+        </div>
+      );
+    }
+
+    
     let begin = this.state.dateStart;
-
     let end = this.state.dateEnd;
     let total = Math.round((end - begin) * (1.1574 * 0.00000001));
 
@@ -180,29 +218,29 @@ class AbsenceRequest extends React.Component {
               </div>
               <div className="abReq-top-right">
                 <div className="abReq-admin-links">
-                  <ul class="nav nav-pills">
-                    <li class="nav-item abReq-links">
+                  <ul className="nav nav-pills">
+                    <li className="nav-item abReq-links">
                       <Link to="/employee-dash">
-                        <p class="nav-link btn-sm abReq-link-color">
+                        <p className="nav-link btn-sm abReq-link-color">
                           Employee Calendar
                         </p>
                       </Link>
                     </li>
-                    <li class="nav-item abReq-links">
+                    <li className="nav-item abReq-links">
                       <Link to="/team-view">
-                        <p class="nav-link btn-sm abReq-link-color">
+                        <p className="nav-link btn-sm abReq-link-color">
                           Team View
                         </p>
                       </Link>
                     </li>
-                    <li class="nav-item abReq-links">
+                    <li className="nav-item abReq-links">
                       <Link to="/absence-request">
-                        <p class="nav-link active btn-sm">New Absence</p>
+                        <p className="nav-link active btn-sm">New Absence</p>
                       </Link>
                     </li>
                   </ul>
                 </div>
-                <div class="abReq-logout-div">
+                <div className="abReq-logout-div">
                   <Link to="/">
                     <button
                       className="btn btn-danger abReq-logout-btn"
@@ -251,11 +289,11 @@ class AbsenceRequest extends React.Component {
                 </div>
 
                 <div className="form-row">
-                  <div class="form-group col-md-4 mb-3">
+                  <div className="form-group col-md-4 mb-3">
                     <label htmlFor="abReqFrom">From</label>
                     <DayPickerInput
                       dayPickerProps={{
-                        disabledDays: { before: today }
+                        disabledDays: { before: this.state.today }
                       }}
                       className="form-control"
                       name="abReqFrom"
@@ -266,13 +304,13 @@ class AbsenceRequest extends React.Component {
                     />
                   </div>
 
-                  <div class="form-group col-md-4 mb-3">
+                  <div className="form-group col-md-4 mb-3">
                     <label htmlFor="abReq-from">To</label>
                     <DayPickerInput
                       dayPickerProps={{
                         disabledDays: {
-                          before: this.state.beforeActive,
-                          after: this.state.afterActive
+                          before: this.state.backDate,
+                          after: this.state.forwardDate
                         }
                       }}
                       className="form-control"
@@ -283,11 +321,11 @@ class AbsenceRequest extends React.Component {
                     />
                   </div>
 
-                  <div class="form-group col-md-4 mb-3">
+                  <div className="form-group col-md-4 mb-3">
                     <label htmlFor="abReq-dur">Duration</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="None"
                       value={duration}
                       // onChange={this.setDuration}
@@ -302,7 +340,7 @@ class AbsenceRequest extends React.Component {
                       .isInValid && "has-error"}`}
                   >
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="abReqText"
                       name="abReqText"
                       placeholder="Reason for Leave"
