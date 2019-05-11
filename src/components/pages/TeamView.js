@@ -48,7 +48,6 @@ class TeamView extends React.Component {
     localStorage.removeItem("timeoff-token");
     Swal({
       title: "Logged-out Successfully",
-      // text: "You clicked the button!",
       icon: "success",
       button: "Okay",
       timer: 2000
